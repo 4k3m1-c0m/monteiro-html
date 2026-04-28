@@ -106,7 +106,7 @@
       </section>
 
       <script>
-        const API_URL = 'https://js-haruy-aula7-vercel.vercel.app/api'
+        const API_URL = 'https://monteiro-vercel.vercel.app/api'
         const navCategorias = document.getElementById('nav-categorias');
         const listaProdutos = document.getElementById('lista-produtos');
         const categoriaTitulo = document.getElementById('categoria-titulo');
@@ -168,7 +168,7 @@
             </div>
             `;
           try {
-            const response = await fetch(`${API_URL}/produtos?categoriaId=${categoriaId}`);
+            const response = await fetch(`${API_URL}/produtos?categoriaid=${id}`);
             const produtos = await response.json();
             renderizarProdutos(produtos);
           } catch (error) {
@@ -190,17 +190,17 @@
               ? p.imagem
               : `./img/${p.imagem || 'logo.png'}`;
             const card = document.createElement('div');
-            card.className = "bg-write rounded-[20px] p-3 shadow-sm border border-gray-100 relative flex flex-col hover-col hover:shadow-md transition-shadow group";
+            card.className = "bg-white rounded-[20px] p-3 shadow-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadow group";
             card.innerHTML = `
-            <div class="absolute insert-0 z-0 cursor-pointer" onclick="abrirModalDetalhes('${p.nome}'', ${p.preco},'${p.descricao || ''}', '${imgSource}', '${p.id}')">
+            <div class="absolute inset-0 z-0 cursor-pointer" onclick="abrirModalDetalhes('${p.nome}', ${p.preco}, '${p.descricao || ''}', '${imgSource}', '${p.id}')">
               </div>
               <img src="${imgSource}" alt="${p.nome}"
               class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10" 
               onerror="this.src='./img/logo.png'">
               <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
-                <h4 class="font-bold text-dark text-sm leading-tigth">${p.nome}</h4>
+                <h4 class="font-bold text-dark text-sm leading-tight">${p.nome}</h4>
               </div>
-              <button onclick="adicionarItem('${p.id}', '${p.nome}', '${p.preco}')" class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative"> Adicionar </button>
+              <button onclick="adicionarItem('${p.id}', '${p.nome}', ${p.preco})" class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative"> Adicionar </button>
             `;
             listaProdutos.appendChild(card);
           });
