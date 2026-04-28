@@ -168,12 +168,14 @@
             </div>
             `;
           try {
-            const response = await fetch(`${API_URL}/produtos?categoriaid=${id}`);
+            console.log('Buscando produtos para categoria:', categoriaId);
+            const response = await fetch(`${API_URL}/produtos?categoriaId=${categoriaId}`);
             const produtos = await response.json();
+            console.log('Produtos recebidos:', produtos);
             renderizarProdutos(produtos);
           } catch (error) {
-            console.error('Error ao carregar produtos: ', error);
-            listaProdutos.innerHTML = '<p class ="col-span-2 text-red-500">Erro ao carregar produtos. </p>';
+            console.error('Erro ao carregar produtos: ', error);
+            listaProdutos.innerHTML = '<p class="col-span-2 text-red-500">Erro ao carregar produtos. Verifique o console.</p>';
           }
         }
 
@@ -181,7 +183,7 @@
           listaProdutos.innerHTML = '';
 
           if (produtos.length === 0) {
-            listaProdutos.innerHTML = '<p class="cal-span-2 text-muted py-10"> Nenhum produto nesta categoria.</p>';
+            listaProdutos.innerHTML = '<p class="col-span-2 text-muted py-10"> Nenhum produto nesta categoria.</p>';
             return;
           }
           produtos.forEach(p => {
