@@ -9,6 +9,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Configurações para PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ca3c3f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="./assets/images/logo.png">
+
   <script>
     tailwind.config = {
       theme: {
@@ -658,8 +665,14 @@
       inicializarCarrinho();
     }
 
-
-
+    // Registro do Service Worker para o PWA
+    if('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('Service Worker Registrado! 🍝', reg))
+            .catch(err => console.error('Erro ao registrar Service Worker: ', err));
+        });
+    }
 
   </script>
 

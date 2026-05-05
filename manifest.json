@@ -1,0 +1,23 @@
+{
+    "name": "Pasta & Vino",
+    "short_name": "Pasta & Vino",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ca3c3f",
+    "description": "Cardápio Digital Pasta & Vino - Famiglia Monteiro",
+    "icons": [
+        {
+            "src": "./assets/images/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "./assets/images/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ]
+}
